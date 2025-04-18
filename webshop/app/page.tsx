@@ -8,8 +8,9 @@ export default async function Page() {
 
   // Fetch users from Supabase using Drizzle ORM schema
   const userData = await db.select().from(users);
-  console.log(userData);
 
+  // console.log(userData);
+  console.log("test")
   return (
     <ul>
       {userData?.map((user, idx) => (
