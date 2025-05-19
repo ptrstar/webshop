@@ -23,6 +23,10 @@ h2 {
 p, a {
   font-size: 0.8rem;
 }
+body {
+  background: #fff; /* or use a light gray like #f9f9f9 */
+  color: #111;
+}
 
 @theme {
   --animate-fade-in-scale: fade-in-scale 0.3s ease-out;
