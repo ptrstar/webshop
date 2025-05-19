@@ -1,10 +1,10 @@
 import { db } from '@/util/supabase/drizzle'
-import { users } from '@/util/supabase/schema';
+import { interest } from '@/util/supabase/schema';
 import { User } from '@/app/components/user';
 
 export default async function Page() {
 
-  const userData = await db.select().from(users);
+  const userData = await db.select().from(interest);
 
   return (
     <>
@@ -13,11 +13,12 @@ export default async function Page() {
         {userData?.map((user, idx) => (
             <User
             key={idx}
-            firstName={user.firstName}
-            lastName={user.lastName}
+            email={user.email}
+            amount={user.amount}
+            date={user.createdAt}
             />
         ))}
-        </ul> 
+        </ul>  
     </>
    
   );

@@ -1,17 +1,19 @@
 import { useState } from "react";
-import { db } from "@/util/supabase/drizzle";
-import { interest } from "@/util/supabase/schema";
 
 export default function InterestForm() {
   const [email, setEmail] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    //await db.insert(interest).values({ email, amount: quantity, createdAt: new Date() });
-    setSubmitted(true);
-  };
+    const res = await fetch("/api/insertInterested", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, amount: quantity }),
+    });
+    if (res.ok) setSubmitted(true);
+  }
 
   if (submitted) {
     return (
