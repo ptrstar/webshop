@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp, json } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, json, smallint } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -11,4 +11,11 @@ export const users = pgTable("users", {
   city: text("city").notNull(),
   country: text("country").notNull(),
   payment: json("payment"),
+});
+
+export const interest = pgTable('interest', {
+  id: serial('id').primaryKey(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+  amount: smallint('amount').notNull(),
+  email: text('email').notNull(),
 });
