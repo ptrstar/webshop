@@ -7,7 +7,7 @@ export default function InterestForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const res = await fetch("/api/insertInterested", {
+    const res = await fetch("/api/insertinterested", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, amount: quantity }),
