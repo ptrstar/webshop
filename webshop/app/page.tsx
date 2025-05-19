@@ -6,8 +6,7 @@ import Preorder from "@/app/components/preorder";
 import Social_Media from "@/app/components/social_media";
 import Contact from "@/app/components/contact";
 import { primary_font } from "@/util/fonts";
-import Image from "next/image";
-import InterestForm from "@/app/components/interest_form";
+
 
 const tabs = [
   { label: "Shop", component: <Preorder /> },
@@ -47,24 +46,7 @@ export default function Page() {
         {tabs[activeTab].component}
       </div>
 
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "40px" }}>
-        <Image
-          src="/speedup-product.png"
-          alt="Speedup Product"
-          width={500}
-          height={350}
-          style={{
-            display: "block",
-            maxWidth: "500px",
-            width: "100%",
-            height: "auto",
-            borderRadius: "16px",
-            boxShadow: "0 4px 24px rgba(0,0,0,0.08)"
-          }}
-        />
-      </div>
-
-      <InterestForm />
+      
 
 
     </div>
