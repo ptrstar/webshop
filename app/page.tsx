@@ -6,10 +6,10 @@ import Preorder from "@/app/components/preorder";
 import Social_Media from "@/app/components/social_media";
 import Contact from "@/app/components/contact";
 import { primary_font } from "@/util/fonts";
-
+import { Tabs, Tab } from "@heroui/react";
 
 const tabs = [
-  { label: "Shop", component: <Preorder /> },
+  { label: "Interesse Melden", component: <Preorder /> },
   { label: "Social Media", component: <Social_Media /> },
   { label: "Kontakt", component: <Contact /> },
 ];
@@ -18,37 +18,39 @@ export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        marginTop: "50px",
+      }}
+    >
       <Logo />
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
-        {tabs.map((tab, idx) => (
-          <button
-            key={tab.label}
-            onClick={() => setActiveTab(idx)}
-            className={primary_font.className}
-            style={{
-              background: "none",
-              border: "none",
-              margin: "0 18px",
-              padding: 0,
-              fontSize: "1.2rem",
-              fontWeight: idx === activeTab ? "bold" : "normal",
-              color: idx === activeTab ? "#000" : "#888",
-              cursor: "pointer",
-              outline: "none",
-            }}
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div
+        className={primary_font.className}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "30px",
+          width: "100%",
+        }}
+      >
+        <Tabs
+          selectedKey={activeTab}
+          onSelectionChange={key => setActiveTab(Number(key))}
+          aria-label="Tabs"
+          variant="underlined"
+        >
+          {tabs.map((tab, idx) => (
+            <Tab key={idx} title={tab.label} />
+          ))}
+        </Tabs>
       </div>
-      <div style={{ marginTop: "40px" }}>
+      <div style={{ marginTop: "40px", width: "100%", display: "flex", justifyContent: "center" }}>
         {tabs[activeTab].component}
       </div>
-
-      
-
-
     </div>
   );
 }

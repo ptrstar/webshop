@@ -5,8 +5,8 @@ import "./globals.css";
 import { primary_font } from "@/util/fonts";
 
 export const metadata: Metadata = {
-  title: "Webshop",
-  description: "Done with advantage on Kinesis",
+  title: "Richi - Das Kartenspiel",
+  description: "Memekartenspiel bestellen",
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`antialiased ${primary_font.className}`}>
         <Providers>
-            <main className="mt-8 w-full max-w-4xl">{children}</main>
+            <main className="mt-8 w-full">{children}</main>
         </Providers>
       </body>
     </html>
