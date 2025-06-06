@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroui/progress": "^2.2.16",
+    "@heroui/react": "^2.7.9",
     "@heroui/system": "^2.4.13",
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.4",
@@ -25,8 +27,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.3.0",
+    "postcss": "^8.5.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
