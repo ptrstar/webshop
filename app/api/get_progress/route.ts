@@ -7,7 +7,7 @@ export async function GET() {
     const result = await db.select({ sum: sum(interest.amount) }).from(interest);
     const sumValue = result[0]?.sum ?? 0;
     return new Response(JSON.stringify({ sum: sumValue }), { status: 200 });
-  } catch (err) {
+  } catch {
     return new Response(JSON.stringify({ error: "Database error" }), { status: 500 });
   }
 }

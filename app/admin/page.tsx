@@ -4,8 +4,14 @@ import { useEffect, useState } from "react";
 import { Progress } from "@heroui/progress";
 import { Table, TableHeader, TableBody, TableRow, TableCell, TableColumn } from "@heroui/react";
 
+type InterestUser = {
+  email: string;
+  amount: number;
+  createdAt?: string;
+};
+
 export default function Page() {
-  const [userData, setUserData] = useState<any[]>([]);
+  const [userData, setUserData] = useState<InterestUser[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
