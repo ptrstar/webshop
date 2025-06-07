@@ -93,9 +93,9 @@ export default function Preorder() {
         }}
       >
         <p>CHF 14.90 pro Spiel</p>
-        <p>Rette Richi, den er fallt jede Momment auf den Boden. Spiele geschickt und versuche, dass Richi sich am Bagger festhalten kann. Stürtz er zu Boden, erhältst du einen Minuspunkt.
+        <p>Rette Richi, den er fallt jede Moment auf den Boden. Spiele geschickt und versuche, dass Richi sich am Bagger festhalten kann. Stürtz er zu Boden, erhältst du einen Minuspunkt.
 Das Spiel kann in 2 verschiedenen Varianten und in einem Teammodus gespielt werden.</p>
-        <p>Geeignet für Memesliebhaber</p>
+        <p>Geeignet für Memeliebhaber</p>
 
       </div>
     </div>
