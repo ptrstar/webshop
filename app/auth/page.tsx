@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { Input, Button, Card, CardBody, CardHeader, CardFooter } from "@heroui/react";
 
 export default function AuthPage() {
   const { data: session, status } = useSession();
@@ -13,10 +14,19 @@ export default function AuthPage() {
 
   if (session) {
     return (
-      <div>
-        <p>Signed in as {session.user?.name}</p>
-        <button onClick={() => signOut()}>Sign out</button>
-      </div>
+      <Card style={{ maxWidth: 400, margin: "40px auto" }}>
+        <CardHeader>
+          <h5 style={{ margin: 0 }}>Admin Panel</h5>
+        </CardHeader>
+        <CardBody>
+          <p>Signed in as <b>{session.user?.name}</b></p>
+        </CardBody>
+        <CardFooter>
+          <Button color="primary" onClick={() => signOut()} fullWidth>
+            Sign out
+          </Button>
+        </CardFooter>
+      </Card>
     );
   }
 
@@ -32,21 +42,42 @@ export default function AuthPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>
-          Username:
-          <input value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-      </div>
-      <div>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-      </div>
-      <button type="submit">Sign in</button>
-      {error && <div style={{ color: "red" }}>{error}</div>}
-    </form>
+    <Card style={{ maxWidth: 400, margin: "40px auto" }}>
+      <CardHeader>
+        <h5 style={{ margin: 0 }}>Admin Login</h5>
+      </CardHeader>
+      <form onSubmit={handleSubmit}>
+        <CardBody>
+          <Input
+            label="Username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            fullWidth
+            required
+            autoFocus
+            style={{ marginBottom: 16 }}
+          />
+          <Input
+            label="Password"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            fullWidth
+            required
+            style={{ marginBottom: 8 }}
+          />
+          {error && (
+            <p style={{ color: "red", marginTop: 8 }}>
+              {error}
+            </p>
+          )}
+        </CardBody>
+        <CardFooter>
+          <Button color="primary" type="submit" fullWidth>
+            Sign in
+          </Button>
+        </CardFooter>
+      </form>
+    </Card>
   );
 }
