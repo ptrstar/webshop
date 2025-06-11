@@ -27,9 +27,10 @@ export function Providers({ children, themeProps }: ProvidersProps) {
   return (
     <SessionProvider>
       <HeroUIProvider navigate={router.push}>
-          <NextThemesProvider {...themeProps} attribute="class">{children}</NextThemesProvider>
+        <NextThemesProvider {...themeProps} attribute="class" enableSystem={false}>
+          {children}
+        </NextThemesProvider>
       </HeroUIProvider>
-
     </SessionProvider>
   );
 }
