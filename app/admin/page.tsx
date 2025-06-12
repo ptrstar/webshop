@@ -12,16 +12,22 @@ type InterestUser = {
 
 export default function Page() {
   const [userData, setUserData] = useState<InterestUser[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [state, setState] = useState("Laden");
 
   useEffect(() => {
     fetch("/api/get_all")
-      .then(res => res.json())
-      .then(data => {
-        setUserData(data);
-        setLoading(false);
+      .then(async res => {
+        const data = await res.json();
+        if (res.status !== 200) {
+          setState("Folgender Fehler aufgetreten: " + (data.error || "Unbekannter Fehler"));
+        } else {
+          setUserData(data);
+          setState("");
+        }
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        setState("Unangenehmer Fehler");
+      });
   }, []);
 
   const target_amt = 200;
@@ -57,9 +63,9 @@ export default function Page() {
           <TableColumn>Date</TableColumn>
         </TableHeader>
         <TableBody>
-          {loading ? (
+          {state != "" ? (
             <TableRow>
-              <TableCell colSpan={3}>Loading...</TableCell>
+              <TableCell colSpan={3}>{state}...</TableCell>
             </TableRow>
           ) : (
             userData.map((user, idx) => (
