@@ -13,7 +13,6 @@ export default function Preorder() {
     fetch("/api/get_progress")
       .then((res) => res.json())
       .then((data) => {
-        console.log("updateeeeee set amount to ", parseInt(data?.sum) + 300)
         setAmount(parseInt(data?.sum) + 300);
       });
   }, []);
@@ -21,7 +20,6 @@ export default function Preorder() {
   // Show 0 until loaded, then clamp to target_amt
   const progressValue = amount !== null ? Math.min(amount, target_amt) : 0;
   const percent = amount !== null ? Math.round((progressValue / target_amt) * 100) : 0;
-  console.log(progressValue, percent)
 
   return (
     <div

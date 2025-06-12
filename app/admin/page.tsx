@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Progress } from "@heroui/progress";
-import { Table, TableHeader, TableBody, TableRow, TableCell, TableColumn } from "@heroui/react";
+import { Table, TableHeader, TableBody, TableRow, TableCell, TableColumn, Button } from "@heroui/react";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 type InterestUser = {
   email: string;
@@ -36,6 +37,19 @@ export default function Page() {
   const totalAmount = userData.reduce((sum, user) => sum + (user.amount || 0), 0);
   const progressValue = Math.min((totalAmount / target_amt) * 100, target_amt);
 
+  async function handleDelete(email: string) {
+    const res = await fetch("/api/delete_interested", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    if (res.ok) {
+      setUserData(users => users.filter(u => u.email !== email));
+    } else {
+      alert("Fehler beim Löschen");
+    }
+  }
+
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: 24 }}>
       <h1 style={{ fontSize: "2rem", fontWeight: 700, marginBottom: 24 }}>Admin</h1>
@@ -61,11 +75,12 @@ export default function Page() {
           <TableColumn>Email</TableColumn>
           <TableColumn>Amount</TableColumn>
           <TableColumn>Date</TableColumn>
+          <TableColumn>Action</TableColumn>
         </TableHeader>
         <TableBody>
           {state != "" ? (
             <TableRow>
-              <TableCell colSpan={3}>{state}...</TableCell>
+              <TableCell colSpan={4}>{state}...</TableCell>
             </TableRow>
           ) : (
             userData.map((user, idx) => (
@@ -73,6 +88,24 @@ export default function Page() {
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.amount}</TableCell>
                 <TableCell>{user.createdAt ? new Date(user.createdAt).toLocaleString() : ""}</TableCell>
+                <TableCell>
+                  <Button
+                    isIconOnly
+                    variant="light"
+                    size="sm"
+                    aria-label="Löschen"
+                    onClick={() => handleDelete(user.email)}
+                    style={{
+                      color: "#9ca3af",
+                      transition: "color 0.2s",
+                      padding: 0,
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "#dc2626")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "#9ca3af")}
+                  >
+                    <TrashIcon width={18} height={18} />
+                  </Button>
+                </TableCell>
               </TableRow>
             ))
           )}
