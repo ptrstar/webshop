@@ -17,8 +17,9 @@ export default function InterestForm() {
 
   if (submitted) {
     return (
-      <div style={{ marginTop: "32px", fontSize: "1.2rem" }}>
-        Danke für ihr Interesse!
+      <div style={{ marginTop: "32px", fontSize: "1rem", textAlign: "center" }}>
+        Danke für dein Interesse!<br /><br />
+        Sie werden per E-Mail benachrichtigt, sobald das Spiel gekauft werden kann.
       </div>
     );
   }
@@ -45,7 +46,7 @@ export default function InterestForm() {
           marginBottom: "12px",
           borderRadius: "6px",
           border: "1px solid #ccc",
-          width: "240px",
+          width: "100%",
         }}
       />
       <input
@@ -61,7 +62,7 @@ export default function InterestForm() {
           marginBottom: "12px",
           borderRadius: "6px",
           border: "1px solid #ccc",
-          width: "240px",
+          width: "100%",
         }}
       />
       <button
