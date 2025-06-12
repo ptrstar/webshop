@@ -66,7 +66,9 @@ export default function Page() {
         <div style={{ flex: 2, background: "#f3f4f6", borderRadius: 12, padding: 20 }}>
           <div style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>Progress</div>
           <Progress aria-label="Progress" value={progressValue} color="success" />
-          <div style={{ fontSize: 14, marginTop: 8 }}>{progressValue}% of goal</div>
+            <div style={{ fontSize: 14, marginTop: 8 }}>
+            {progressValue.toFixed(2)}% of goal
+            </div>
         </div>
       </div>
       {/* User Table */}
