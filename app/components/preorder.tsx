@@ -149,7 +149,7 @@ export default function Preorder() {
           marginBottom: 8,
           lineHeight: 1.5,
         }}>
-          Rette Richi, denn er fällt jeden Moment vom Bagger auf den Boden! Verhindere dies, indem du geschickt spielst und gleichzeitig  den anderen das Leben schwer machst. Wer als Erster keine Leben mehr hat, verliert - der mit den meisten, gewinnt.
+          Rette Richi, denn er fällt jeden Moment vom Bagger auf den Boden! Verhindere dies, indem du geschickt spielst und gleichzeitig  den anderen das Leben schwer machst. Wer als Erstes keine Leben mehr hat, verliert - der mit den meisten, gewinnt.
         </p>
         <p style={{
           fontStyle: "italic",
