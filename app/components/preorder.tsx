@@ -37,7 +37,7 @@ export default function Preorder() {
     >
       {/* Hero Image */}
         <Image
-          src="/speedup-product.png"
+          src="/richi-product-zoom.png"
           alt="Richi das Kartenspiel"
           width={500}
           height={350}
@@ -149,7 +149,7 @@ export default function Preorder() {
           marginBottom: 8,
           lineHeight: 1.5,
         }}>
-          Rette Richi, denn er fällt jden Moment auf den Boden! Verhindere dies, indem du geschickt spielst und gleichzeitig  den anderen das Leben schwer machst. Wer als Erster keine Leben mehr hat, verliert - der mit den meisten, gewinnt.
+          Rette Richi, denn er fällt jden Moment vom Bagger auf den Boden! Verhindere dies, indem du geschickt spielst und gleichzeitig  den anderen das Leben schwer machst. Wer als Erster keine Leben mehr hat, verliert - der mit den meisten, gewinnt.
         </p>
         <p style={{
           fontStyle: "italic",
