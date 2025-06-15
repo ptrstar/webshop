@@ -7,7 +7,7 @@ import { primary_font } from "@/util/fonts";
 
 export const metadata: Metadata = {
   title: "Richi - Das Kartenspiel",
-  description: "Meme Kartenspiel kaufen: Rette Richi, denn er fällt jeden Moment vom Bagger auf den Boden! Verhindere dies, indem du geschickt spielst und gleichzeitig  den anderen das Leben schwer machst. Wer als Erster keine Leben mehr hat, verliert - der mit den meisten, gewinnt.",
+  description: "Meme Kartenspiel kaufen: Rette Richi, denn er fällt jeden Moment vom Bagger auf den Boden! Verhindere dies, indem du geschickt spielst und gleichzeitig  den anderen das Leben schwer machst. Wer als Erstes keine Leben mehr hat, verliert - der mit den meisten, gewinnt.",
 };
 
 export default function RootLayout({
