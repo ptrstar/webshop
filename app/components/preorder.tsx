@@ -5,6 +5,7 @@ import { Tooltip } from "@heroui/tooltip";
 import InterestForm from "@/app/components/interest_form";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import EmblaCarousel from "./carousel";
 
 export default function Preorder() {
   const target_amt = 500;
@@ -23,6 +24,26 @@ export default function Preorder() {
   const progressValue = amount !== null ? Math.min(amount, target_amt) : 0;
   const percent = amount !== null ? Math.round((progressValue / target_amt) * 100) : 0;
 
+  // Images for the carousel
+  const carouselSlides = [
+    {
+      src: "/richi-tuckbox.png",
+      alt: "Richi das Kartenspiel Tuckbox",
+    },
+    {
+      src: "/richi-setup.png",
+      alt: "Richi das Kartenspiel Setup",
+    },
+    {
+      src: "/richi-cards-in-hand.png",
+      alt: "Richi das Kartenspiel Karten in Hand",
+    },
+    {
+      src: "/richi-many-cards.jpg",
+      alt: "Richi das Kartenspiel viele Karten",
+    },
+  ];
+
   return (
     <div
       style={{
@@ -35,35 +56,29 @@ export default function Preorder() {
         alignItems: "center",
       }}
     >
-      {/* Hero Image */}
-        <Image
-          src="/richi-product-zoom.png"
-          alt="Richi das Kartenspiel"
-          width={500}
-          height={350}
-          className="preorder-hero-img"
-          priority
-          style={{
-            width: "100%",
-            height: "auto",
-            borderRadius: 16,
-            objectFit: "cover",
-            display: "block",
-            marginBottom: "1em"
-          }}
-        />
-
-      {/* Title */}
-      <h2
-        style={{
-          textAlign: "center",
-          fontSize: "2rem",
-          fontWeight: 700,
-          marginBottom: "24px",
-        }}
-      >
-        Richi - das Kartenspiel
-      </h2>
+      {/* Embla Carousel */}
+      <EmblaCarousel
+        options={{}}
+        slides={carouselSlides.map((img, idx) => (
+          <Image
+            key={idx}
+            src={img.src}
+            alt={img.alt}
+            width={500}
+            height={350}
+            className="preorder-hero-img"
+            priority={idx === 0}
+            style={{
+              width: "100%",
+              height: "auto",
+              borderRadius: 16,
+              objectFit: "cover",
+              display: "block",
+              marginBottom: "1em"
+            }}
+          />
+        ))}
+      />
 
       {/* Progress bar and text */}
       <div style={{ width: "100%", marginBottom: "16px" }}>
@@ -92,7 +107,10 @@ export default function Preorder() {
         >
           {amount === null
             ? "Lade Fortschritt..."
-            : `${percent}% der Vorbestellungsziele erreicht! (${progressValue} von ${target_amt})`}
+            : `${percent}% erreicht! (${progressValue} von ${target_amt})`}
+        </div>
+        <div>
+          Produktionsstart bei Erreichen des Ziels
         </div>
       </div>
 
@@ -103,7 +121,7 @@ export default function Preorder() {
         width: "100%",
         marginBottom: "24px",
         padding: "16px",
-        background: "linear-gradient(90deg, #ff9800 0%, #ff5722 100%)",
+        background: "linear-gradient(90deg, #fdba51 0%, #f1a01e 100%)",
         color: "#fff",
         fontWeight: 700,
         fontSize: "1.2rem",
@@ -159,6 +177,54 @@ export default function Preorder() {
           Geeignet für Memeliebhaber
         </p>
       </div>
+
+      {/* Symbols */}
+      <div
+        style={{
+          width: "100%",
+          background: "rgba(0,0,0,0.04)",
+          borderRadius: 12,
+          padding: "24px 18px",
+          marginBottom: 24,
+          color: "#222",
+          textAlign: "center",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ flex: 1, textAlign: "left" }}>
+            Familienspiel<br />Partyspiel
+          </div>
+          <div style={{ flex: 1, textAlign: "center" }}>
+            <Image
+              src="/richi-symbols.png"
+              alt="Spiel Symbole"
+              width={80}
+              height={48}
+              style={{ display: "inline-block", maxWidth: "100%", height: "auto" }}
+            />
+          </div>
+          <div style={{ flex: 1, textAlign: "right" }}>
+            50 Spielkarten<br />mit Anleitung
+          </div>
+        </div>
+      </div>
+
+      <div style={{display: "flex", alignItems: "center", marginBottom: "4em", marginTop: "2em"}}>
+        Richi - Das Kartenspiel | ©2025
+      </div>
+      <style jsx>{`
+        .embla {
+          overflow: hidden;
+        }
+        .embla__container {
+          display: flex;
+        }
+        .embla__slide {
+          flex: 0 0 100%;
+          min-width: 0;
+        }
+      `}</style>
     </div>
   );
 }

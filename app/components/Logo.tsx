@@ -1,10 +1,17 @@
-import Image from 'next/image';
-import logo from '@/public/logo.jpeg';
+// import Image from 'next/image';
+// import logo from '@/public/logo.jpeg';
 
 export default function Logo() {
   return (
-    <div style={{ fontSize: '24px', fontWeight: 'bold' }}>
-      <Image src={logo} alt="Logo" width={200} />
-    </div>
+    <h2
+      style={{
+        textAlign: "center",
+        fontSize: "2rem",
+        fontWeight: 700,
+        marginBottom: "24px",
+      }}
+    >
+      Richi - das Kartenspiel
+    </h2>
   );
 }
