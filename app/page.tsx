@@ -6,7 +6,6 @@ import Preorder from "@/app/components/preorder";
 import Social_Media from "@/app/components/social_media";
 import Contact from "@/app/components/contact";
 import { primary_font } from "@/util/fonts";
-import { Tabs, Tab } from "@heroui/react";
 
 const tabs = [
   { label: "Interesse Melden", component: <Preorder /> },
@@ -47,7 +46,6 @@ export default function Page() {
                   border: "none",
                   cursor: "pointer",
                   padding: "0.5rem 1rem",
-                  
                   fontWeight: activeTab === idx ? "bold" : "normal",
                   outline: "none",
                 }}

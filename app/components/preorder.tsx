@@ -5,6 +5,7 @@ import { Tooltip } from "@heroui/tooltip";
 import InterestForm from "@/app/components/interest_form";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import EmblaCarousel from "./carousel";
 
 export default function Preorder() {
   const target_amt = 500;
@@ -23,6 +24,26 @@ export default function Preorder() {
   const progressValue = amount !== null ? Math.min(amount, target_amt) : 0;
   const percent = amount !== null ? Math.round((progressValue / target_amt) * 100) : 0;
 
+  // Images for the carousel
+  const carouselSlides = [
+    {
+      src: "/richi-tuckbox.png",
+      alt: "Richi das Kartenspiel Tuckbox",
+    },
+    {
+      src: "/richi-setup.png",
+      alt: "Richi das Kartenspiel Setup",
+    },
+    {
+      src: "/richi-cards-in-hand.png",
+      alt: "Richi das Kartenspiel Karten in Hand",
+    },
+    {
+      src: "/richi-many-cards.jpg",
+      alt: "Richi das Kartenspiel viele Karten",
+    },
+  ];
+
   return (
     <div
       style={{
@@ -35,25 +56,29 @@ export default function Preorder() {
         alignItems: "center",
       }}
     >
-      {/* Hero Image */}
-        <Image
-          src="/richi-product-zoom.png"
-          alt="Richi das Kartenspiel"
-          width={500}
-          height={350}
-          className="preorder-hero-img"
-          priority
-          style={{
-            width: "100%",
-            height: "auto",
-            borderRadius: 16,
-            objectFit: "cover",
-            display: "block",
-            marginBottom: "1em"
-          }}
-        />
-
-      
+      {/* Embla Carousel */}
+      <EmblaCarousel
+        options={{}}
+        slides={carouselSlides.map((img, idx) => (
+          <Image
+            key={idx}
+            src={img.src}
+            alt={img.alt}
+            width={500}
+            height={350}
+            className="preorder-hero-img"
+            priority={idx === 0}
+            style={{
+              width: "100%",
+              height: "auto",
+              borderRadius: 16,
+              objectFit: "cover",
+              display: "block",
+              marginBottom: "1em"
+            }}
+          />
+        ))}
+      />
 
       {/* Progress bar and text */}
       <div style={{ width: "100%", marginBottom: "16px" }}>
@@ -188,7 +213,18 @@ export default function Preorder() {
       <div style={{display: "flex", alignItems: "center", marginBottom: "4em", marginTop: "2em"}}>
         Richi - Das Kartenspiel | ©2025
       </div>
-
+      <style jsx>{`
+        .embla {
+          overflow: hidden;
+        }
+        .embla__container {
+          display: flex;
+        }
+        .embla__slide {
+          flex: 0 0 100%;
+          min-width: 0;
+        }
+      `}</style>
     </div>
   );
 }
