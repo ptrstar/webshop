@@ -54,7 +54,16 @@ export default function Page() {
                 {tab.label}
               </button>
               {idx < tabs.length - 1 && (
-                <span style={{ color: "#aaa", userSelect: "none" }}>|</span>
+                <>
+                  <span className="tab-separator" style={{ color: "#aaa", userSelect: "none" }}>|</span>
+                  <style jsx>{`
+                  @media (max-width: 700px) {
+                  .tab-separator {
+                    display: none;
+                  }
+                  }
+                `}</style>
+                </>
               )}
             </div>
           ))}
@@ -63,6 +72,46 @@ export default function Page() {
       <div style={{ marginTop: "40px", width: "100%", display: "flex", justifyContent: "center" }}>
         {tabs[activeTab].component}
       </div>
+
+
+      <div style={{ display: "flex", justifyContent: "space-around", marginTop: "2em", width: "100%", maxWidth: "500px" }}>
+        <a
+          href="/agb"
+          style={{
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        padding: "0.5rem 1rem",
+        outline: "none",
+        textDecoration: "none",
+        color: "inherit",
+        display: "inline-block",
+          }}
+        >
+          AGB
+        </a>
+        <a
+          href="/privacy"
+          style={{
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        padding: "0.5rem 1rem",
+        outline: "none",
+        textDecoration: "none",
+        color: "inherit",
+        display: "inline-block",
+          }}
+        >
+          Datenschutzerklärung
+        </a>
+      </div>
+
+
+      <div style={{display: "flex", alignItems: "center", marginBottom: "4em", marginTop: "2em"}}>
+        Richi - Das Kartenspiel | ©2025
+      </div>
+
     </div>
   );
 }

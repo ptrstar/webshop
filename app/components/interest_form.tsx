@@ -18,7 +18,7 @@ export default function InterestForm() {
   if (submitted) {
     return (
       <div style={{ marginTop: "32px", fontSize: "1rem", textAlign: "center" }}>
-        Danke für dein Interesse!<br /><br />
+        Danke für das Interesse!<br /><br />
         Sie werden per E-Mail benachrichtigt, sobald das Spiel gekauft werden kann.
       </div>
     );
