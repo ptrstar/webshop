@@ -167,14 +167,14 @@ export default function Preorder() {
           marginBottom: 8,
           lineHeight: 1.5,
         }}>
-          Rette Richi, denn er fällt jeden Moment vom Bagger auf den Boden! Verhindere dies, indem du geschickt spielst und gleichzeitig  den anderen das Leben schwer machst. Wer als Erstes keine Leben mehr hat, verliert - der mit den meisten, gewinnt.
+          Rette Richi, denn er fällt jeden Moment vom Bagger auf den Boden! Verhindere dies, indem du geschickt spielst und gleichzeitig  den anderen das Leben schwer machst. Wer als Erstes keine Leben mehr hat, verliert - die Person mit den meisten gewinnt.
         </p>
         <p style={{
           fontStyle: "italic",
           fontSize: "0.95rem",
           opacity: 0.85,
         }}>
-          Geeignet für Memeliebhaber
+          Geeignet für Meme-liebende
         </p>
       </div>
 
@@ -228,10 +228,6 @@ export default function Preorder() {
             }
           }
         `}</style>
-      </div>
-
-      <div style={{display: "flex", alignItems: "center", marginBottom: "4em", marginTop: "2em"}}>
-        Richi - Das Kartenspiel | ©2025
       </div>
 
     </div>
