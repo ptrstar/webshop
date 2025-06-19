@@ -1,4 +1,4 @@
-export default function tac() {
+export default function privacy() {
 
     return (
         <div>
