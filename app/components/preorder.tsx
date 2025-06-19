@@ -191,8 +191,17 @@ export default function Preorder() {
           boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ flex: 1, textAlign: "left" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexDirection: "row",
+            gap: 12,
+          }}
+          className="richi-symbols-row"
+        >
+          <div style={{ flex: 1, textAlign: "left", paddingRight: "0.4rem"}}>
             Familienspiel<br />Partyspiel
           </div>
           <div style={{ flex: 1, textAlign: "center" }}>
@@ -204,27 +213,27 @@ export default function Preorder() {
               style={{ display: "inline-block", maxWidth: "100%", height: "auto" }}
             />
           </div>
-          <div style={{ flex: 1, textAlign: "right" }}>
+          <div style={{ flex: 1, textAlign: "right", paddingLeft: "0.4rem"}}>
             50 Spielkarten<br />mit Anleitung
           </div>
         </div>
+        <style jsx>{`
+          @media (max-width: 1000px) {
+            .richi-symbols-row {
+              flex-direction: column !important;
+              gap: 0.5em;
+            }
+            .richi-symbols-row > div {
+              text-align: center !important;
+            }
+          }
+        `}</style>
       </div>
 
       <div style={{display: "flex", alignItems: "center", marginBottom: "4em", marginTop: "2em"}}>
         Richi - Das Kartenspiel | ©2025
       </div>
-      <style jsx>{`
-        .embla {
-          overflow: hidden;
-        }
-        .embla__container {
-          display: flex;
-        }
-        .embla__slide {
-          flex: 0 0 100%;
-          min-width: 0;
-        }
-      `}</style>
+
     </div>
   );
 }
