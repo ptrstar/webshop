@@ -53,17 +53,7 @@ export default function Preorder() {
           }}
         />
 
-      {/* Title */}
-      <h2
-        style={{
-          textAlign: "center",
-          fontSize: "2rem",
-          fontWeight: 700,
-          marginBottom: "24px",
-        }}
-      >
-        Richi - das Kartenspiel
-      </h2>
+      
 
       {/* Progress bar and text */}
       <div style={{ width: "100%", marginBottom: "16px" }}>
@@ -92,7 +82,10 @@ export default function Preorder() {
         >
           {amount === null
             ? "Lade Fortschritt..."
-            : `${percent}% der Vorbestellungsziele erreicht! (${progressValue} von ${target_amt})`}
+            : `${percent}% erreicht! (${progressValue} von ${target_amt})`}
+        </div>
+        <div>
+          Produktionsstart bei Erreichen des Ziels
         </div>
       </div>
 
@@ -103,7 +96,7 @@ export default function Preorder() {
         width: "100%",
         marginBottom: "24px",
         padding: "16px",
-        background: "linear-gradient(90deg, #ff9800 0%, #ff5722 100%)",
+        background: "linear-gradient(90deg, #fdba51 0%, #f1a01e 100%)",
         color: "#fff",
         fontWeight: 700,
         fontSize: "1.2rem",
@@ -159,6 +152,43 @@ export default function Preorder() {
           Geeignet für Memeliebhaber
         </p>
       </div>
+
+      {/* Symbols */}
+      <div
+        style={{
+          width: "100%",
+          background: "rgba(0,0,0,0.04)",
+          borderRadius: 12,
+          padding: "24px 18px",
+          marginBottom: 24,
+          color: "#222",
+          textAlign: "center",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ flex: 1, textAlign: "left" }}>
+            Familienspiel<br />Partyspiel
+          </div>
+          <div style={{ flex: 1, textAlign: "center" }}>
+            <Image
+              src="/richi-symbols.png"
+              alt="Spiel Symbole"
+              width={80}
+              height={48}
+              style={{ display: "inline-block", maxWidth: "100%", height: "auto" }}
+            />
+          </div>
+          <div style={{ flex: 1, textAlign: "right" }}>
+            50 Spielkarten<br />mit Anleitung
+          </div>
+        </div>
+      </div>
+
+      <div style={{display: "flex", alignItems: "center", marginBottom: "4em", marginTop: "2em"}}>
+        Richi - Das Kartenspiel | ©2025
+      </div>
+
     </div>
   );
 }

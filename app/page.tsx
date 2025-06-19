@@ -37,16 +37,30 @@ export default function Page() {
           width: "100%",
         }}
       >
-        <Tabs
-          selectedKey={activeTab}
-          onSelectionChange={key => setActiveTab(Number(key))}
-          aria-label="Tabs"
-          variant="underlined"
-        >
+        <div style={{ display: "flex", gap: "0.5rem" }}>
           {tabs.map((tab, idx) => (
-            <Tab key={idx} title={tab.label} />
+            <div key={idx}>
+              <button
+                onClick={() => setActiveTab(idx)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "0.5rem 1rem",
+                  
+                  fontWeight: activeTab === idx ? "bold" : "normal",
+                  outline: "none",
+                }}
+                aria-current={activeTab === idx ? "page" : undefined}
+              >
+                {tab.label}
+              </button>
+              {idx < tabs.length - 1 && (
+                <span style={{ color: "#aaa", userSelect: "none" }}>|</span>
+              )}
+            </div>
           ))}
-        </Tabs>
+        </div>
       </div>
       <div style={{ marginTop: "40px", width: "100%", display: "flex", justifyContent: "center" }}>
         {tabs[activeTab].component}
