@@ -11,7 +11,7 @@ export default function Logo() {
         marginBottom: "24px",
       }}
     >
-      Richi - das Kartenspiel
+      Richi - Das Kartenspiel
     </h2>
   );
 }
