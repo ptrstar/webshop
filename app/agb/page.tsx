@@ -2,7 +2,18 @@ export default function Agb() {
 
 
     return (
-        <div>
+        <div
+            style={{
+                width: "100%",
+                background: "rgba(0,0,0,0.04)",
+                borderRadius: 12,
+                padding: "24px 18px",
+                marginBottom: 24,
+                color: "#222",
+                textAlign: "center",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+            }}
+        >
 
             1. Geltungsbereich
             Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Bestellungen, die über den Onlineshop von [Richi - das Kartenspiel] durch Privatpersonen mit Wohnsitz in der Schweiz getätigt werden. Mit der Vorbestellung gelten diese AGB als angenommen.

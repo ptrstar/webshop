@@ -1,7 +1,18 @@
 export default function privacy() {
 
     return (
-        <div>
+        <div
+            style={{
+                width: "100%",
+                background: "rgba(0,0,0,0.04)",
+                borderRadius: 12,
+                padding: "24px 18px",
+                marginBottom: 24,
+                color: "#222",
+                textAlign: "center",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+            }}
+        >
             1. Verantwortliche Stelle
             Ort: 		 Riehen [4125], Schweiz
             E-Mail:	 info@kartenspielrichi.ch
