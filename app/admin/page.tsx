@@ -178,7 +178,7 @@ export default function Page() {
                       {group.label}: <b>{group.count}</b> neue Einträge
                     </TableCell>
                   </TableRow>
-                  {group.users.map((user, idx) => (
+                  {group.users.map((user) => (
                     <TableRow key={user.email + user.createdAt}>
                       <TableCell>{user.email}</TableCell>
                       <TableCell>{user.amount}</TableCell>
