@@ -6,6 +6,7 @@ import InterestForm from "@/app/components/interest_form";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import EmblaCarousel from "./carousel";
+import Shop from "./shop";
 
 export default function Preorder() {
   const target_amt = 500;
@@ -140,6 +141,7 @@ export default function Preorder() {
           <InterestForm />
         </div>
       )}
+      <Shop />
 
       {/* Info Text always visible below Interest Form */}
       <div
