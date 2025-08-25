@@ -1,13 +1,13 @@
-import { Button, Modal, ModalBody, ModalContent, ModalHeader } from "@heroui/react";
+import { Button, Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from "@heroui/react";
 import OrderForm from "./order_form";
 import { useState } from "react";
 
 export default function Shop() {
 
-    const [isOpen, setIsOpen] = useState(false);
-    const [orderId, setOrderId] = useState<String | null>(null);
-    const [modalStep, setModalStep] = useState("order");
     const [interested, setInterested] = useState(false);
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const [modalStep, setModalStep] = useState<"order" | "payment" | "thankyou">("order");
+    const [orderId, setOrderId] = useState<string | null>(null);
 
     function handleOrderSuccess(id: string) {
         setOrderId(id);
@@ -27,27 +27,29 @@ export default function Shop() {
     }
 
     return (
-        (!interested) ? (
-            <button
-            style={{
-            width: "100%",
-            marginBottom: "24px",
-            padding: "16px",
-            background: "linear-gradient(90deg, #fdba51 0%, #f1a01e 100%)",
-            color: "#fff",
-            fontWeight: 700,
-            fontSize: "1.2rem",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-            boxShadow: "0 4px 16px rgba(255,87,34,0.15)",
-            transition: "background 0.3s, transform 0.2s",
-            }}
-            onClick={() => setInterested(true)}
-            >
-            "Bestellen →"
-            </button>
-        ) : (
+        <>
+            {((!isOpen) ? (
+                <button
+                style={{
+                width: "100%",
+                marginBottom: "24px",
+                padding: "16px",
+                background: "linear-gradient(90deg, #fdba51 0%, #f1a01e 100%)",
+                color: "#fff",
+                fontWeight: 700,
+                fontSize: "1.2rem",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+                boxShadow: "0 4px 16px rgba(255,87,34,0.15)",
+                transition: "background 0.3s, transform 0.2s",
+                }}
+                onClick={() => onOpen()}
+                >
+                Bestellen →
+                </button>
+                ):"")}
+
             <Modal size="3xl" isOpen={isOpen} onOpenChange={handleModalOpenChange}>
                 <ModalContent>
                 {(onClose) => (
@@ -92,6 +94,7 @@ export default function Shop() {
                 )}
                 </ModalContent>
             </Modal>
-        )
+        </>
+            
     );
 }

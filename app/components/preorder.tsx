@@ -115,7 +115,7 @@ export default function Preorder() {
         </div>
       </div>
 
-      {/* Interest Form */}
+      {/* Interest Form
       {!interested ? (
         <button
           style={{
@@ -140,7 +140,7 @@ export default function Preorder() {
         <div style={{ width: "100%", marginBottom: "24px" }}>
           <InterestForm />
         </div>
-      )}
+      )} */}
       <Shop />
 
       {/* Info Text always visible below Interest Form */}
