@@ -1,16 +1,18 @@
 import { Button, Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from "@heroui/react";
-import OrderForm from "./order_form";
+import OrderForm from "./shop/order_form";
 import { useState } from "react";
+import Payment from "./shop/payment";
 
 export default function Shop() {
 
-    const [interested, setInterested] = useState(false);
+    const [amount, setAmount] = useState(0);
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const [modalStep, setModalStep] = useState<"order" | "payment" | "thankyou">("order");
     const [orderId, setOrderId] = useState<string | null>(null);
 
-    function handleOrderSuccess(id: string) {
-        setOrderId(id);
+    function handleOrderSuccess(data: any) {
+        setOrderId(data.id);
+        setAmount(data.amount);
         setModalStep("payment");
     }
 
@@ -65,13 +67,7 @@ export default function Shop() {
                                     <OrderForm onSuccess={handleOrderSuccess} />
                                 )}
                                 {modalStep === "payment" && (
-                                    <div>
-                                        {/* Payment form or integration goes here */}
-                                        <p>Zahlungsformular (Demo)</p>
-                                        <Button color="primary" onClick={handlePaymentSuccess}>
-                                            Zahlung abschließen
-                                        </Button>
-                                    </div>
+                                    <Payment amount={amount} customerId={orderId ?? undefined}></Payment>
                                 )}
                                 {modalStep === "thankyou" && (
                                     <div style={{ textAlign: "center", margin: "32px 0" }}>

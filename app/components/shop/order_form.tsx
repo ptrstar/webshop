@@ -3,7 +3,7 @@ import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 
 type OrderFormProps = {
-  onSuccess?: (id: string) => void;
+  onSuccess?: (data: any) => void;
 };
 
 export default function OrderForm({ onSuccess }: OrderFormProps) {
@@ -43,7 +43,7 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
       }
       const data = await res.json();
       setStatus({ success: true, id: data.id });
-      if (onSuccess) onSuccess(data.id);
+      if (onSuccess) onSuccess(data);
     } catch (err: any) {
       setStatus({ success: false, reason: err?.message || "Netzwerkfehler" });
     }
