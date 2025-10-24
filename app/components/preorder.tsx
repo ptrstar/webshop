@@ -117,7 +117,7 @@ export default function Preorder() {
         </div>
         {
           amount != null && amount >= target_amt ?
-          <div>Produktion wird in Auftrag gegeben. Das Spiel kann ab Mitte Oktober gekauft werden.</div>
+          <div>Produktion wird in Auftrag gegeben. Das Spiel kann ab Ende November gekauft werden. Wir entschuldigen uns für die Lieferverzögerungen.</div>
           :
           <div>
             Produktionsstart bei Erreichen des Ziels
