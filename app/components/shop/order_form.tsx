@@ -3,7 +3,7 @@ import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 
 type OrderFormProps = {
-  onSuccess?: (data: any) => void;
+  onSuccess?: (data: {id: string, amount: number}) => void;
 };
 
 export default function OrderForm({ onSuccess }: OrderFormProps) {
@@ -20,7 +20,7 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
   const [status, setStatus] = useState<null | { success: true; id: string } | { success: false; reason: string }>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
     setForm({
       ...form,
       [name]: name === "amount" ? value.replace(/\D/, "") : value,
@@ -44,8 +44,9 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
       const data = await res.json();
       setStatus({ success: true, id: data.id });
       if (onSuccess) onSuccess(data);
-    } catch (err: any) {
-      setStatus({ success: false, reason: err?.message || "Netzwerkfehler" });
+    } catch (err: unknown) {
+      if (err) {}
+      setStatus({ success: false, reason: "Netzwerkfehler.." });
     }
   }
 

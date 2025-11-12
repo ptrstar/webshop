@@ -10,14 +10,10 @@ export default function Shop() {
     const [modalStep, setModalStep] = useState<"order" | "payment" | "thankyou">("order");
     const [orderId, setOrderId] = useState<string | null>(null);
 
-    function handleOrderSuccess(data: any) {
+    function handleOrderSuccess(data: {id: string, amount: number}) {
         setOrderId(data.id);
         setAmount(data.amount);
         setModalStep("payment");
-    }
-
-    function handlePaymentSuccess() {
-        setModalStep("thankyou");
     }
 
     function handleModalOpenChange(open: boolean) {

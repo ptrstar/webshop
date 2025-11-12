@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../components/Logo";
+import Link from "next/link";
 
 export default function CancelPage() {
     return (
@@ -43,7 +44,7 @@ export default function CancelPage() {
                 <p style={{ marginBottom: "20px" }}>
                     Bitte überprüfen Sie Ihre Zahlungsinformationen und versuchen Sie es erneut.
                 </p>
-                <a
+                <Link
                     href="/"
                     style={{
                         display: "inline-block",
@@ -56,7 +57,7 @@ export default function CancelPage() {
                     }}
                 >
                     Zurück zur Startseite
-                </a>
+                </Link>
             </div>
         </div>
     );

@@ -19,9 +19,10 @@ export async function POST(req: NextRequest) {
                 .where(eq(customers.id, id));
 
             return NextResponse.json({ success: true });
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error(err);
-            return NextResponse.json({ error: err.message || "Server error" }, { status: 500 });
+            const message = err instanceof Error ? err.message : String(err);
+            return NextResponse.json({ error: message || "Server error" }, { status: 500 });
         }
     } else {
         return new Response(JSON.stringify({ error: "Access denied" }), { status: 401 });    

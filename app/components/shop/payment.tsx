@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function CheckoutButton({ amount, customerId }: { amount: number; customerId?: string }) {
   const [loading, setLoading] = useState(false);

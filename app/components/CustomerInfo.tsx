@@ -1,7 +1,9 @@
 import React from "react";
 
-// Adjust fields as needed based on your customer schema
-export default function CustomerInfo({ customer }: { customer: any }) {
+import type { InferModel } from "drizzle-orm";
+import { customers } from "@/util/supabase/schema";
+
+export default function CustomerInfo({ customer }: { customer: InferModel<typeof customers> }) {
     return (
         <div
             style={{
@@ -53,7 +55,7 @@ export default function CustomerInfo({ customer }: { customer: any }) {
             </div>
             <div style={{ marginBottom: "10px" }}>
                 <strong>Bezahlt am:</strong>{" "}
-                {customer.payed_at ? new Date(customer.payed_at).toLocaleString("de-DE") : "Noch nicht bezahlt"}
+                {customer.payedAt ? new Date(customer.payedAt).toLocaleString("de-DE") : "Noch nicht bezahlt"}
             </div>
             <div style={{ marginTop: "18px", fontWeight: "bold" }}>
                 {!customer.isShipped ? (

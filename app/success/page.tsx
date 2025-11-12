@@ -5,35 +5,41 @@ import { customers } from "@/util/supabase/schema";
 import { eq } from "drizzle-orm";
 import CustomerInfo from "../components/CustomerInfo";
 
-export default async function SuccessPage(props: { searchParams: { session_id?: string } }) {
-    const { searchParams } = props;
-    const sessionId = searchParams?.session_id;
-    let customer = null;
+interface SuccessPageProps {
+  searchParams: Promise<{ session_id?: string | string[] }>;
+}
 
-    if (sessionId) {
-        const result = await db
-            .select()
-            .from(customers)
-            .where(eq(customers.stripeCheckoutId, sessionId));
-        customer = result[0] || null;
-    }
+export default async function SuccessPage({ searchParams }: SuccessPageProps) {
+  const params = await searchParams;
+  const rawSession = params?.session_id;
+  const sessionId = Array.isArray(rawSession) ? rawSession[0] : rawSession;
 
-    return (
-        <div
-        style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-            marginTop: "50px",
-        }}
-        >
-            <Logo />
-            {customer ? (
-                <CustomerInfo customer={customer} />
-            ) : (
-                <div>Auftrag konnte nicht gefunden werden.</div>
-            )}
-        </div>
-    );
+  let customer = null;
+
+  if (sessionId) {
+    const result = await db
+      .select()
+      .from(customers)
+      .where(eq(customers.stripeCheckoutId, sessionId));
+    customer = result[0] || null;
+  }
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        marginTop: "50px",
+      }}
+    >
+      <Logo />
+      {customer ? (
+        <CustomerInfo customer={customer} />
+      ) : (
+        <div>Auftrag konnte nicht gefunden werden.</div>
+      )}
+    </div>
+  );
 }

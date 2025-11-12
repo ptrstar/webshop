@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import stripe from '@/util/stripe/stripe';
+import Stripe from "stripe";
 
 export async function POST(req: Request) {
   try {
@@ -15,7 +16,7 @@ export async function POST(req: Request) {
     }
 
     // Only include customer if it's a valid Stripe customer ID
-    const sessionParams: any = {
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
       payment_method_types: ["card"],
       mode: "payment",
       line_items: [
@@ -42,8 +43,9 @@ export async function POST(req: Request) {
     const session = await stripe.checkout.sessions.create(sessionParams);
 
     return NextResponse.json({ sessionId: session.id, url: session.url });
-  } catch (err: any) {
-    console.error("Stripe Checkout Error:", err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
-  }
+    } catch (err: unknown) {
+      console.error(err);
+      const message = err instanceof Error ? err.message : String(err);
+      return NextResponse.json({ error: message || "Server error" }, { status: 500 });
+    }
 }

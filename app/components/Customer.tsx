@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import type { InferModel } from "drizzle-orm";
+import { customers } from "@/util/supabase/schema";
 
-export default function Customer({ customer }: { customer: any }) {
+export default function Customer({ customer }: { customer: InferModel<typeof customers> }) {
     const [loading, setLoading] = useState(false);
 
     const canDelete = !customer.isPayed || customer.isShipped; // delete allowed when not paid OR already shipped
