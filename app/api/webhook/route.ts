@@ -44,6 +44,8 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: `Webhook Error: ${err.message}` }, { status: 400 });
     }
 
+    console.log("EVENT TYPE:" + event.type)
+
     // Handle the event
     switch (event.type) {
         case "checkout.session.async_payment_failed": {
@@ -57,10 +59,22 @@ export async function POST(req: NextRequest) {
             const session = event.data.object;
             const metadata = session.metadata;
             if (metadata?.app_customer_id) {
-                await db
-                    .update(customers)
-                    .set({ isPayed: true, payedAt: new Date() })
-                    .where(eq(customers.id, Number(metadata.app_customer_id)));
+                try {
+                    const result = await db
+                        .update(customers)
+                        .set({ isPayed: true, payedAt: new Date(), stripeCheckoutId: session.id })
+                        .where(eq(customers.id, Number(metadata.app_customer_id)));
+
+                    console.log("✅ DB update success:", {
+                        customerId: metadata.app_customer_id,
+                        result,
+                    });
+                } catch (err) {
+                    console.error("❌ DB update failed:", {
+                        customerId: metadata.app_customer_id,
+                        error: err instanceof Error ? err.message : err,
+                    });
+                }
             }
             console.log("Async payment succeeded:", { metadata });
             break;
@@ -68,11 +82,27 @@ export async function POST(req: NextRequest) {
         case "checkout.session.completed": {
             const session = event.data.object;
             const metadata = session.metadata;
+            //const metadata = {app_customer_id: 29, amount: 1};
             if (metadata?.app_customer_id) {
-                await db
-                    .update(customers)
-                    .set({ isPayed: true, payedAt: new Date() })
-                    .where(eq(customers.id, Number(metadata.app_customer_id)));
+                try {
+                    const result = await db
+                        .update(customers)
+                        .set({ isPayed: true, payedAt: new Date(), stripeCheckoutId: session.id })
+                        .where(eq(customers.id, Number(metadata.app_customer_id)));
+
+                    console.log("✅ DB update success:", {
+                        customerId: metadata.app_customer_id,
+                        result,
+                    });
+                } catch (err) {
+                    console.error("❌ DB update failed:", {
+                        customerId: metadata.app_customer_id,
+                        error: err instanceof Error ? err.message : err,
+                    });
+                }
+
+            } else {
+                console.log("ERROR;;;; NO METADATA");
             }
             console.log("Payment successful:", { metadata });
             break;

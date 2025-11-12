@@ -11,6 +11,7 @@ export const customers= pgTable("customers", {
   country: text("country").notNull(),
   email: text("email").notNull(),
   amount: integer("amount").notNull(),
+  stripeCheckoutId: text("stripe_checkout_id"),
   isPayed: boolean("is_payed").notNull(),
   isShipped: boolean("is_shipped").notNull(),
   payedAt: timestamp("payed_at", { withTimezone: true }),

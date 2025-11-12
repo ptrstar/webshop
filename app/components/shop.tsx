@@ -70,6 +70,7 @@ export default function Shop() {
                                     <Payment amount={amount} customerId={orderId ?? undefined}></Payment>
                                 )}
                                 {modalStep === "thankyou" && (
+                                    // THIS WILL NEVER BE SEEN WITH THE CURRENT PAYMENT FLOW
                                     <div style={{ textAlign: "center", margin: "32px 0" }}>
                                         <div style={{ fontWeight: 700, fontSize: "1.2rem", marginBottom: 12 }}>
                                             Vielen Dank für Ihre Bestellung!

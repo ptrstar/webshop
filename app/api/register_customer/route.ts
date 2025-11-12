@@ -25,6 +25,7 @@ export async function POST(req: Request) {
         country,
         email,
         amount: parseInt(amount, 10),
+        stripeCheckoutId: null,
         isPayed: false,
         isShipped: false,
         createdAt: new Date(),
