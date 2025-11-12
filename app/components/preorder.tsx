@@ -2,15 +2,16 @@
 
 import { Progress } from "@heroui/progress";
 import { Tooltip } from "@heroui/tooltip";
-import InterestForm from "@/app/components/interest_form";
+//import InterestForm from "@/app/components/interest_form";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import EmblaCarousel from "./carousel";
+import Shop from "./shop";
 
 export default function Preorder() {
   const target_amt = 500;
   const [amount, setAmount] = useState<number | null>(null);
-  const [interested, setInterested] = useState<boolean>(false);
+  //const [interested, setInterested] = useState<boolean>(false);
 
   useEffect(() => {
     fetch("/api/get_progress")
@@ -126,7 +127,7 @@ export default function Preorder() {
         
       </div>
 
-      {/* Interest Form */}
+      {/* Interest Form
       {!interested ? (
         <button
           style={{
@@ -151,7 +152,8 @@ export default function Preorder() {
         <div style={{ width: "100%", marginBottom: "24px" }}>
           <InterestForm />
         </div>
-      )}
+      )} */}
+      <Shop />
 
       {/* Info Text always visible below Interest Form */}
       <div
