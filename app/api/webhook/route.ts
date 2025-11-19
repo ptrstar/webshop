@@ -50,7 +50,6 @@ export async function POST(req: NextRequest) {
         case "checkout.session.async_payment_failed": {
             const session = event.data.object;
             const metadata = session.metadata; // Your custom metadata
-            // TODO: Use metadata.app_customer_id and customer as needed
             console.log("Async payment failed:", { metadata });
             break;
         }
@@ -59,15 +58,44 @@ export async function POST(req: NextRequest) {
             const metadata = session.metadata;
             if (metadata?.app_customer_id) {
                 try {
-                    const result = await db
+                    await db
                         .update(customers)
                         .set({ isPayed: true, payedAt: new Date(), stripeCheckoutId: session.id })
                         .where(eq(customers.id, Number(metadata.app_customer_id)));
 
-                    console.log("✅ DB update success:", {
-                        customerId: metadata.app_customer_id,
-                        result,
-                    });
+                    const emailPayload = {
+                        recipientEmail: metadata.app_customer_email,
+                        subject: `Richi Kartenspiel Bestellungsbestätigung`,
+                        body: `
+                            <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                            </head>
+                            <body>
+                                <h3>Vielen Dank ${metadata.app_customer_name}</h3>
+                                <p>Ihre Bestellung ist eingegangen und bezahlt. Sie können den Status unter folgendem Link einsehen.</p>
+                                <a href="https://www.kartenspielrichi.ch/success?session_id=${session.id}">Bestellung</a>
+                                <p>Melden Sie sich mit Fragen an diesen Absender.</p>
+                                <br>
+                                <p>Mit freundlichen Grüssen, Richi-team</p>
+                            </body>
+                            </html>
+                        `,
+                    };
+                    try {
+                        const targetUrl = `${process.env.NEXTAUTH_URL}/api/send-mail-via-infoaccount`;
+                        await fetch(targetUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(emailPayload), 
+                        });
+                    } catch {
+                        console.log("could not send email:", metadata);
+                    }
+
                 } catch (err) {
                     console.error("❌ DB update failed:", {
                         customerId: metadata.app_customer_id,
@@ -75,7 +103,6 @@ export async function POST(req: NextRequest) {
                     });
                 }
             }
-            console.log("Async payment succeeded:", { metadata });
             break;
         }
         case "checkout.session.completed": {
@@ -84,7 +111,7 @@ export async function POST(req: NextRequest) {
             //const metadata = {app_customer_id: 29, amount: 1};
             if (metadata?.app_customer_id) {
                 try {
-                    const result = await db
+                    await db
                         .update(customers)
                         .set({ isPayed: true, payedAt: new Date(), stripeCheckoutId: session.id })
                         .where(eq(customers.id, Number(metadata.app_customer_id)));
@@ -110,42 +137,30 @@ export async function POST(req: NextRequest) {
                             </html>
                         `,
                     };
-
                     try {
                         const targetUrl = `${process.env.NEXTAUTH_URL}/api/send-mail-via-infoaccount`;
-                        const emailResponse = await fetch(targetUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(emailPayload), 
+                        await fetch(targetUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(emailPayload), 
                         });
-                        console.log(emailResponse)
                     } catch {
                         console.log("could not send email:", metadata);
                     }
-
-                    console.log("✅ DB update success:", {
-                        customerId: metadata.app_customer_id,
-                        result,
-                    });
                 } catch (err) {
                     console.error("❌ DB update failed:", {
                         customerId: metadata.app_customer_id,
                         error: err instanceof Error ? err.message : err,
                     });
                 }
-
-            } else {
-                console.log("ERROR;;;; NO METADATA");
             }
-            console.log("Payment successful:", { metadata });
             break;
         }
         case "checkout.session.expired": {
             const session = event.data.object;
             const metadata = session.metadata;
-            // TODO: Use metadata.app_customer_id and customer as needed
             console.log("Session expired:", { metadata });
             break;
         }
