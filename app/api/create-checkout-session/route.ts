@@ -4,7 +4,7 @@ import Stripe from "stripe";
 
 export async function POST(req: Request) {
   try {
-    const { customerId, amount } = await req.json();
+    const { customerId, amount, customerName, customerEmail } = await req.json();
 
     if (!customerId || !amount) {
       return NextResponse.json({ error: "Missing customerId or amount" }, { status: 400 });
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
           price_data: {
             product: "prod_SemJSFhp7IXx3T",
             currency: "chf",
-            unit_amount: 1450,
+            unit_amount: 1490,
           },
           quantity: amount,
         },
@@ -33,6 +33,8 @@ export async function POST(req: Request) {
       cancel_url: `${baseUrl}/cancel`,
       metadata: {
         app_customer_id: customerId,
+        app_customer_email: customerEmail,
+        app_customer_name: customerName
       },
     };
 

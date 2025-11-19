@@ -3,7 +3,7 @@ import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 
 type OrderFormProps = {
-  onSuccess?: (data: {id: string, amount: number}) => void;
+  onSuccess?: (data: {id: string, amount: number, email: string, name: string}) => void;
 };
 
 export default function OrderForm({ onSuccess }: OrderFormProps) {

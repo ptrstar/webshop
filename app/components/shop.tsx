@@ -6,13 +6,17 @@ import Payment from "./shop/payment";
 export default function Shop() {
 
     const [amount, setAmount] = useState(0);
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const [modalStep, setModalStep] = useState<"order" | "payment" | "thankyou">("order");
     const [orderId, setOrderId] = useState<string | null>(null);
 
-    function handleOrderSuccess(data: {id: string, amount: number}) {
+    function handleOrderSuccess(data: {id: string, amount: number, email: string, name: string}) {
         setOrderId(data.id);
         setAmount(data.amount);
+        setEmail(data.email);
+        setName(data.name);
         setModalStep("payment");
     }
 
@@ -28,23 +32,23 @@ export default function Shop() {
         <>
             {((!isOpen) ? (
                 <button
-                style={{
-                width: "100%",
-                marginBottom: "24px",
-                padding: "16px",
-                background: "linear-gradient(90deg, #fdba51 0%, #f1a01e 100%)",
-                color: "#fff",
-                fontWeight: 700,
-                fontSize: "1.2rem",
-                border: "none",
-                borderRadius: "8px",
-                cursor: "pointer",
-                boxShadow: "0 4px 16px rgba(255,87,34,0.15)",
-                transition: "background 0.3s, transform 0.2s",
-                }}
-                onClick={() => onOpen()}
-                >
-                Bestellen →
+                    style={{
+                    width: "100%",
+                    marginBottom: "24px",
+                    padding: "16px",
+                    background: "linear-gradient(90deg, #fdba51 0%, #f1a01e 100%)",
+                    color: "#fff",
+                    fontWeight: 700,
+                    fontSize: "1.2rem",
+                    border: "none",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    boxShadow: "0 4px 16px rgba(255,87,34,0.15)",
+                    transition: "background 0.3s, transform 0.2s",
+                    }}
+                    onClick={() => onOpen()}
+                    >
+                    Bestellen →
                 </button>
                 ):"")}
 
@@ -63,7 +67,7 @@ export default function Shop() {
                                     <OrderForm onSuccess={handleOrderSuccess} />
                                 )}
                                 {modalStep === "payment" && (
-                                    <Payment amount={amount} customerId={orderId ?? undefined}></Payment>
+                                    <Payment amount={amount} customerId={orderId ?? undefined} customerEmail={email} customerName={name}></Payment>
                                 )}
                                 {modalStep === "thankyou" && (
                                     // THIS WILL NEVER BE SEEN WITH THE CURRENT PAYMENT FLOW

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function CheckoutButton({ amount, customerId }: { amount: number; customerId?: string }) {
+export default function CheckoutButton({ amount, customerId, customerEmail, customerName }: { amount: number; customerId?: string, customerEmail:string, customerName:string }) {
   const [loading, setLoading] = useState(false);
 
   const handleCheckout = async () => {
@@ -10,7 +10,7 @@ export default function CheckoutButton({ amount, customerId }: { amount: number;
     const res = await fetch("/api/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount, customerId }),
+      body: JSON.stringify({ amount, customerId, customerEmail, customerName }),
     });
 
     const { url } = await res.json();

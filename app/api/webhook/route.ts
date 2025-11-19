@@ -45,8 +45,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: `Webhook Error: ${message}` }, { status: 400 });
     }
 
-    console.log("EVENT TYPE:" + event.type)
-
     // Handle the event
     switch (event.type) {
         case "checkout.session.async_payment_failed": {
@@ -90,6 +88,46 @@ export async function POST(req: NextRequest) {
                         .update(customers)
                         .set({ isPayed: true, payedAt: new Date(), stripeCheckoutId: session.id })
                         .where(eq(customers.id, Number(metadata.app_customer_id)));
+
+
+                    const emailPayload = {
+                        recipientEmail: metadata.customerEmail,
+                        subject: `Richi Kartenspiel Bestellungsbestätigung`,
+                        body: `
+                            <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                            </head>
+                            <body>
+                                <h3>Vielen Dank ${metadata.customerName}</h3>
+                                <p>Ihre Bestellung ist eingegangen und bezahlt. Sie können den Status unter folgendem Link einsehen.</p>
+                                <a href="https://www.kartenspielrichi.ch/success?session_id=${session.id}">Bestellung</a>
+                                <p>Melden Sie sich mit Fragen an diesen Absender.</p>
+                                <br>
+                                <p>Mit freundlichen Grüssen, Richi-team</p>
+                            </body>
+                            </html>
+                        `,
+                    };
+
+                    try {
+                        const targetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/send-confirmation-email`;
+
+                        const emailResponse = await fetch(targetUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // Optional: include your internal secret check here if you still want it
+                            // 'X-Internal-Secret': process.env.INTERNAL_API_SECRET as string,
+                        },
+                        // *** THIS IS THE PACKAGING STEP ***
+                        body: JSON.stringify(emailPayload), 
+                        });
+                        console.log(emailResponse)
+                    } catch {
+                        console.log("could not send email")
+                    }
 
                     console.log("✅ DB update success:", {
                         customerId: metadata.app_customer_id,
