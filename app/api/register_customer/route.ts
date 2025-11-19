@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       })
       .returning({ id: customers.id });
 
-    return new Response(JSON.stringify({ success: true, id: inserted.id, amount: amount }), { status: 200 });
+    return new Response(JSON.stringify({ success: true, id: inserted.id, amount: amount, email: email }), { status: 200 });
   } catch (err) {
     return new Response(
       JSON.stringify({ error: "Database error: " + (err instanceof Error ? err.message : "") }),

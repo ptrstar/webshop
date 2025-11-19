@@ -8,9 +8,10 @@ import Contact from "@/app/components/contact";
 import { primary_font } from "@/util/fonts";
 
 const tabs = [
-  { label: "Interesse Melden", component: <Preorder /> },
-  { label: "Social Media", component: <Social_Media /> },
+  { label: "Shop", component: <Preorder /> },
+  { label: "Erklärvideo", component: <Contact /> },
   { label: "Kontakt", component: <Contact /> },
+  { label: "Social Media", component: <Social_Media /> },
 ];
 
 export default function Page() {
@@ -42,18 +43,19 @@ export default function Page() {
               <button
                 onClick={() => setActiveTab(idx)}
                 style={{
-                  background: "none",
+                  background: "rgb(243,243,243)",
+                  borderRadius: "1em",
                   border: "none",
                   cursor: "pointer",
                   padding: "0.5rem 1rem",
-                  fontWeight: activeTab === idx ? "bold" : "normal",
+                  fontWeight: activeTab === idx ? "bolder" : "normal",
                   outline: "none",
                 }}
                 aria-current={activeTab === idx ? "page" : undefined}
               >
                 {tab.label}
               </button>
-              {idx < tabs.length - 1 && (
+              {/* {idx < tabs.length - 1 && (
                 <>
                   <span className="tab-separator" style={{ color: "#aaa", userSelect: "none" }}>|</span>
                   <style jsx>{`
@@ -64,7 +66,7 @@ export default function Page() {
                   }
                 `}</style>
                 </>
-              )}
+              )} */}
             </div>
           ))}
         </div>
