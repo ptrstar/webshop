@@ -112,16 +112,12 @@ export async function POST(req: NextRequest) {
                     };
 
                     try {
-                        const targetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/send-confirmation-email`;
-
+                        const targetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/send-mail-via-infoaccount`;
                         const emailResponse = await fetch(targetUrl, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            // Optional: include your internal secret check here if you still want it
-                            // 'X-Internal-Secret': process.env.INTERNAL_API_SECRET as string,
                         },
-                        // *** THIS IS THE PACKAGING STEP ***
                         body: JSON.stringify(emailPayload), 
                         });
                         console.log(emailResponse)
