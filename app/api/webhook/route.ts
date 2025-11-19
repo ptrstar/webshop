@@ -112,7 +112,7 @@ export async function POST(req: NextRequest) {
                     };
 
                     try {
-                        const targetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/send-mail-via-infoaccount`;
+                        const targetUrl = `${process.env.NEXTAUTH_URL}/api/send-mail-via-infoaccount`;
                         const emailResponse = await fetch(targetUrl, {
                         method: 'POST',
                         headers: {
@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
                         });
                         console.log(emailResponse)
                     } catch {
-                        console.log("could not send email")
+                        console.log("could not send email:", metadata);
                     }
 
                     console.log("✅ DB update success:", {
