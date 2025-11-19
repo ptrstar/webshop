@@ -6,10 +6,11 @@ import Preorder from "@/app/components/preorder";
 import Social_Media from "@/app/components/social_media";
 import Contact from "@/app/components/contact";
 import { primary_font } from "@/util/fonts";
+import ErklaervideoPage from "./erklaervideo/page";
 
 const tabs = [
   { label: "Shop", component: <Preorder /> },
-  // { label: "Erklärvideo", component: <Contact /> },
+  { label: "Erklärvideo", component: <ErklaervideoPage /> },
   { label: "Kontakt", component: <Contact /> },
   { label: "Social Media", component: <Social_Media /> },
 ];
@@ -73,6 +74,11 @@ export default function Page() {
       </div>
       <div style={{ marginTop: "40px", width: "100%", display: "flex", justifyContent: "center" }}>
         {tabs[activeTab].component}
+      </div>
+      <div style={{ marginTop: "40px", width: "100%", display: "flex", justifyContent: "center" }}>
+        
+          test
+
       </div>
 
 
