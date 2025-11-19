@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Logo from "@/app/components/Logo";
 import Preorder from "@/app/components/preorder";
 import Social_Media from "@/app/components/social_media";
@@ -75,9 +76,47 @@ export default function Page() {
       <div style={{ marginTop: "40px", width: "100%", display: "flex", justifyContent: "center" }}>
         {tabs[activeTab].component}
       </div>
-      <div style={{ marginTop: "40px", width: "100%", display: "flex", justifyContent: "center" }}>
-        
-          test
+
+      <div style={{margin: "0 auto",maxWidth: "33vw",minWidth: "500px", width: "100%", display: "flex", flexDirection: "column", alignItems:"center"}}>
+          <p style={{
+          fontWeight: 700,
+          fontSize: "1.15rem",
+          marginBottom: 8,
+          letterSpacing: "0.01em",
+        }}>
+          Ausserdem erhältlich bei
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.5rem",
+            justifyContent: "center",
+            width: "100%",
+            maxWidth: "720px",
+          }}
+        >
+          {[1].map((i) => (
+            <div
+              key={i}
+              style={{
+                flex: "0 0 calc(50% - 0.5rem)",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                src={`/partner-orell.png`}
+                alt={`shop ${i}`}
+                width={360}
+                height={240}
+                
+                style={{ width: "100%", height: "auto", borderRadius: "1em", boxShadow: "0.1em 0.1em 0.1em 0.1em lightgray", border: "none" }}
+              />
+            </div>
+          ))}
+        </div>
 
       </div>
 
