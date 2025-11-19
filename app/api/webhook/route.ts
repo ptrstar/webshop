@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
 
 
                     const emailPayload = {
-                        recipientEmail: metadata.customerEmail,
+                        recipientEmail: metadata.app_customer_email,
                         subject: `Richi Kartenspiel Bestellungsbestätigung`,
                         body: `
                             <!DOCTYPE html>
@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
                                 <meta charset="UTF-8">
                             </head>
                             <body>
-                                <h3>Vielen Dank ${metadata.customerName}</h3>
+                                <h3>Vielen Dank ${metadata.app_customer_name}</h3>
                                 <p>Ihre Bestellung ist eingegangen und bezahlt. Sie können den Status unter folgendem Link einsehen.</p>
                                 <a href="https://www.kartenspielrichi.ch/success?session_id=${session.id}">Bestellung</a>
                                 <p>Melden Sie sich mit Fragen an diesen Absender.</p>
