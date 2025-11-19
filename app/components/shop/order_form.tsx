@@ -94,7 +94,7 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
       <Input
         name="name"
         type="text"
-        placeholder="Name"
+        placeholder="Vollständiger Name"
         value={form.name}
         onChange={handleChange}
         required
