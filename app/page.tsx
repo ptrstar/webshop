@@ -9,7 +9,7 @@ import { primary_font } from "@/util/fonts";
 
 const tabs = [
   { label: "Shop", component: <Preorder /> },
-  { label: "Erklärvideo", component: <Contact /> },
+  // { label: "Erklärvideo", component: <Contact /> },
   { label: "Kontakt", component: <Contact /> },
   { label: "Social Media", component: <Social_Media /> },
 ];
