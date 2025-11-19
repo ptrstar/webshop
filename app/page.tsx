@@ -82,6 +82,7 @@ export default function Page() {
           fontWeight: 700,
           fontSize: "1.15rem",
           marginBottom: 8,
+          marginTop: "2em",
           letterSpacing: "0.01em",
         }}>
           Ausserdem erhältlich bei
