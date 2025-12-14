@@ -6,8 +6,8 @@ import { Tooltip } from "@heroui/tooltip";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import EmblaCarousel from "./carousel";
-//import Shop from "./shop";
-import InterestForm from "./interest_form";
+import Shop from "./shop";
+// import InterestForm from "./interest_form";
 
 export default function Preorder() {
   const target_amt = 500;
@@ -129,7 +129,7 @@ export default function Preorder() {
       </div>
 
       
-      {!interested ? (
+      {/* {!interested ? (
         <button
           style={{
         width: "100%",
@@ -153,8 +153,8 @@ export default function Preorder() {
         <div style={{ width: "100%", marginBottom: "24px" }}>
           <InterestForm />
         </div>
-      )}
-      {/* <Shop /> */}
+      )} */}
+      <Shop />
       {/* <InterestForm></InterestForm> */}
 
       {/* Info Text always visible below Interest Form */}
