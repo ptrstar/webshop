@@ -31,7 +31,7 @@ const ErklaervideoPage = () => {
                     />
                 </div>
             </div>
-        </div>
+      </div>
     );
 };
 
