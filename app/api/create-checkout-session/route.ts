@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       line_items: [
         {
           price_data: {
-            product: "prod_SemJSFhp7IXx3T",
+            product: "prod_TbTYuJPli0e5Jz",
             currency: "chf",
             unit_amount: 1490,
           },
