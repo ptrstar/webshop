@@ -82,51 +82,7 @@ export default function Preorder() {
         ))}
       />
 
-      {/* Progress bar and text */}
-      <div style={{ width: "100%", marginBottom: "16px" }}>
-        {amount != null && amount > target_amt ? <Progress
-              aria-label="Vorbestellungen"
-              value={percent}
-              color="success"
-            /> : 
-          <Tooltip
-          content={
-            <div className="px-1 py-2">
-              <div className="text-small font-bold">Zur Vorbestellung</div>
-              <div className="text-tiny">Das Spiel wird produziert, sobald das Ziel von 500 erreicht ist. Danach kann das Spiel gekauft werden und die Lieferung dauert ca. 3 Wochen.</div>
-            </div>
-          }
-          color="default"
-          >
-            <Progress
-              aria-label="Vorbestellungen"
-              value={percent}
-              color="success"
-            />
-
-          </Tooltip>
-        }
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "8px",
-            fontSize: "1rem",
-          }}
-        >
-          {amount === null
-            ? "Lade Fortschritt..."
-            : `${percent}% erreicht! (${progressValue} von ${target_amt})`}
-        </div>
-        {
-          amount != null && amount >= target_amt ?
-          <div>Produktion wird in Auftrag gegeben. Das Spiel kann ab Ende November gekauft werden. Wir entschuldigen uns für die Lieferverzögerungen.</div>
-          :
-          <div>
-            Produktionsstart bei Erreichen des Ziels
-          </div>
-        }
-        
-      </div>
+      
 
       
       {/* {!interested ? (
