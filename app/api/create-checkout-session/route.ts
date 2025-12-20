@@ -31,6 +31,7 @@ export async function POST(req: Request) {
       ],
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/cancel`,
+      allow_promotion_codes: true,
       metadata: {
         app_customer_id: customerId,
         app_customer_email: customerEmail,
