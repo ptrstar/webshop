@@ -19,15 +19,18 @@ export default function CheckoutButton({ amount, customerId, customerEmail, cust
 
   return (
     <div>
-      <p style={{ marginBottom: "12px", fontSize: "0.9rem", color: "#666" }}>
+      <p style={{ marginTop: "2em", marginBottom: "2em", fontSize: "0.9rem", color: "#666" }}>
         Sie werden zu Stripe weitergeleitet, um die Zahlung zu verarbeiten.
       </p>
       <button
         onClick={handleCheckout}
         disabled={loading}
-        className="rounded-xl bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
+        className="rounded-xl bg-green-600 px-4 py-2 text-white hover:bg-green-700 disabled:opacity-50"
+        style={{
+          width: "100%"
+        }}
       >
-        {loading ? "Weiterleitung..." : "Bezahlen"}
+        {loading ? "Weiterleitung..." : "Bezahlen (2/2)"}
       </button>
     </div>
   );
