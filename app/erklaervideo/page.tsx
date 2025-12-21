@@ -13,7 +13,7 @@ const ErklaervideoPage = () => {
             <p style={{ textAlign: "center", margin: "0 0 12px" }}>In Produktion...</p>
 
             {/* video wrapper keeps a 16:9 aspect and makes the iframe fill the parent width */}
-            <div style={{ width: "40%", maxWidth: "100%" }}>
+            {/* <div style={{ width: "40%", maxWidth: "100%" }}>
                 <div style={{ position: "relative", width: "100%", paddingTop: "56.25%" }}>
                     <iframe
                         src="https://player.vimeo.com/video/676247342?autoplay=1"
@@ -30,7 +30,7 @@ const ErklaervideoPage = () => {
                         }}
                     />
                 </div>
-            </div>
+            </div> */}
       </div>
     );
 };
