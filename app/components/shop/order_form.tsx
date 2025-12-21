@@ -144,6 +144,7 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
         name="country"
         type="text"
         placeholder="Land"
+        isDisabled
         value={form.country}
         onChange={handleChange}
         required
