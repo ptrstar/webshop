@@ -51,7 +51,7 @@ export default function Preorder() {
       style={{
         margin: "0 auto",
         maxWidth: "33vw",
-        minWidth: "500px",
+        minWidth: "80vw",
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -117,6 +117,7 @@ export default function Preorder() {
       <div
         style={{
           width: "100%",
+          maxWidth: "48rem",
           background: "rgba(0,0,0,0.04)",
           borderRadius: 12,
           padding: "24px 18px",
@@ -154,6 +155,7 @@ export default function Preorder() {
       <div
         style={{
           width: "100%",
+          maxWidth: "48rem",
           background: "rgba(0,0,0,0.04)",
           borderRadius: 12,
           padding: "24px 18px",

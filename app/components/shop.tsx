@@ -34,6 +34,7 @@ export default function Shop() {
                 <button
                     style={{
                     width: "100%",
+                    maxWidth: "48rem",
                     marginBottom: "24px",
                     padding: "16px",
                     background: "linear-gradient(90deg, #fdba51 0%, #f1a01e 100%)",
