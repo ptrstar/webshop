@@ -29,19 +29,19 @@ export default function Preorder() {
   // Images for the carousel
   const carouselSlides = [
     {
-      src: "/richi-tuckbox.png",
+      src: "/richi-tuckbox.jpeg",
       alt: "Richi das Kartenspiel Tuckbox",
     },
     {
-      src: "/richi-setup.png",
+      src: "/richi-setup.jpeg",
       alt: "Richi das Kartenspiel Setup",
     },
     {
-      src: "/richi-cards-in-hand.png",
+      src: "/richi-cards-in-hand.jpeg",
       alt: "Richi das Kartenspiel Karten in Hand",
     },
     {
-      src: "/richi-many-cards.jpg",
+      src: "/richi-many-cards.jpeg",
       alt: "Richi das Kartenspiel viele Karten",
     },
   ];
