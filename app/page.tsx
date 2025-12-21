@@ -42,21 +42,22 @@ export default function Page() {
         <div style={{ display: "flex", gap: "0.5rem" }}>
           {tabs.map((tab, idx) => (
             <div key={idx}>
-              <button
+                <button
                 onClick={() => setActiveTab(idx)}
                 style={{
                   background: "rgb(243,243,243)",
                   borderRadius: "1em",
                   border: "none",
                   cursor: "pointer",
-                  padding: "0.5rem 1rem",
                   fontWeight: activeTab === idx ? "bolder" : "normal",
                   outline: "none",
+                  fontSize: "clamp(0.75rem, 2vw, 1rem)",
+                  padding: "clamp(0.25rem, 1.5vw, 0.5rem) clamp(0.5rem, 2vw, 1rem)",
                 }}
                 aria-current={activeTab === idx ? "page" : undefined}
-              >
+                >
                 {tab.label}
-              </button>
+                </button>
               {/* {idx < tabs.length - 1 && (
                 <>
                   <span className="tab-separator" style={{ color: "#aaa", userSelect: "none" }}>|</span>
@@ -73,11 +74,13 @@ export default function Page() {
           ))}
         </div>
       </div>
-      <div style={{ marginTop: "40px", width: "100%", display: "flex", justifyContent: "center" }}>
-        {tabs[activeTab].component}
+      <div style={{ marginTop: "40px", width: "100%", display: "flex", justifyContent: "center", padding: "0 1rem" }}>
+        <div style={{ width: "100%", maxWidth: "33vw", minWidth: "80vw" }}>
+          {tabs[activeTab].component}
+        </div>
       </div>
 
-      <div style={{margin: "0 auto",maxWidth: "33vw",minWidth: "500px", width: "100%", display: "flex", flexDirection: "column", alignItems:"center"}}>
+      <div style={{margin: "0 auto",maxWidth: "33vw",minWidth: "80vw", width: "100%", display: "flex", flexDirection: "column", alignItems:"center"}}>
           <p style={{
           fontWeight: 700,
           fontSize: "1.15rem",
@@ -85,7 +88,7 @@ export default function Page() {
           marginTop: "2em",
           letterSpacing: "0.01em",
         }}>
-          Ausserdem erhältlich bei
+          Ausserdem bald erhältlich bei
         </p>
 
         <div

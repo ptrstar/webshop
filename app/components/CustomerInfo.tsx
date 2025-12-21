@@ -61,7 +61,7 @@ export default function CustomerInfo({ customer }: { customer: InferModel<typeof
                 {!customer.isShipped ? (
                     <span>Versand läuft – Ihr Paket wird in Kürze verschickt.</span>
                 ) : (
-                    <span>Ihr Paket wurde versendet und sollte in den kommenden 2 bis 3 Wochen ankommen.</span>
+                    <span>Ihr Paket wurde versendet und kommt in den nächsten 5 Werktagen an.</span>
                 )}
             </div>
         </div>
