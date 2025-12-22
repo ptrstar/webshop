@@ -7,11 +7,11 @@ import Preorder from "@/app/components/preorder";
 import Social_Media from "@/app/components/social_media";
 import Contact from "@/app/components/contact";
 import { primary_font } from "@/util/fonts";
-import ErklaervideoPage from "./erklaervideo/page";
+import Videocontent from "./components/videocontent";
 
 const tabs = [
   { label: "Shop", component: <Preorder /> },
-  { label: "Erklärvideo", component: <ErklaervideoPage /> },
+  { label: "Erklärvideo", component: <Videocontent /> },
   { label: "Kontakt", component: <Contact /> },
   { label: "Social Media", component: <Social_Media /> },
 ];
