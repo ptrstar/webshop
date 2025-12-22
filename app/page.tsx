@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Logo from "@/app/components/Logo";
 import Preorder from "@/app/components/preorder";
@@ -18,6 +18,14 @@ const tabs = [
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get("tab");
+    if (tab === "erklaervideo") {
+      setActiveTab(1);
+    }
+  }, []);
 
   return (
     <div

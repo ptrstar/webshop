@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const ErklaervideoPage = () => {
-    redirect("/");
+    redirect("/?tab=erklaervideo");
     // return (
     //     <div
     //         style={{
