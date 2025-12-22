@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
 
     // 2. Define the email options
     const mailOptions = {
-      from: `Your Website <${process.env.ZMAIL_SMTP_USER}>`, // Sender address
+      from: `Richi - Das Kartenspiel <${process.env.ZMAIL_SMTP_USER}>`, // Sender address
       to: recipientEmail, // Recipient's email address (e.g., the new user)
       subject: subject, // Email subject
       html: body, // HTML body content

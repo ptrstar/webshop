@@ -49,11 +49,49 @@ export default function Shop() {
                     }}
                     onClick={() => onOpen()}
                     >
-                    Bestellen →
+                    Bestellen
                 </button>
-                ):"")}
+                ):
+                <div
+                    style={{width: "100%",
+                    maxWidth: "48rem"}}
+                >
+                    {modalStep === "order" && "Adresse eingeben"}
+                    {modalStep === "payment" && "Bezahlung"}
+                    {modalStep === "thankyou" && "Vielen Dank"}
 
-            <Modal size="3xl" isOpen={isOpen} onOpenChange={handleModalOpenChange}>
+                    <br></br>
+
+                    <div style={{ width: "100%", marginBottom: "24px" }}>
+                        {modalStep === "order" && (
+                            <OrderForm onSuccess={handleOrderSuccess} />
+                        )}
+                        {modalStep === "payment" && (
+                            <Payment amount={amount} customerId={orderId ?? undefined} customerEmail={email} customerName={name}></Payment>
+                        )}
+                        {modalStep === "thankyou" && (
+                            // THIS WILL NEVER BE SEEN WITH THE CURRENT PAYMENT FLOW
+                            <div style={{ textAlign: "center", margin: "32px 0" }}>
+                                <div style={{ fontWeight: 700, fontSize: "1.2rem", marginBottom: 12 }}>
+                                    Vielen Dank für Ihre Bestellung!
+                                </div>
+                                {orderId && (
+                                    <div>
+                                        Ihre Bestellnummer: <span style={{ fontWeight: 600 }}>{orderId}</span>
+                                    </div>
+                                )}
+                                {/* <Button color="primary" style={{ marginTop: 24 }} onClick={onClose}>
+                                    Schließen
+                                </Button> */}
+                            </div>
+                        )}
+                    </div>
+
+                </div>
+            )}
+
+
+            {/* <Modal size="full" isOpen={isOpen} onOpenChange={handleModalOpenChange}>
                 <ModalContent>
                 {(onClose) => (
                     <>
@@ -91,7 +129,7 @@ export default function Shop() {
                     </>
                 )}
                 </ModalContent>
-            </Modal>
+            </Modal> */}
         </>
             
     );

@@ -144,6 +144,7 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
         name="country"
         type="text"
         placeholder="Land"
+        isDisabled
         value={form.country}
         onChange={handleChange}
         required
@@ -175,8 +176,8 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
           pattern="[0-9]*"
         />
       </div>
-      <Button color="primary" type="submit" style={{ marginTop: 8, width: "100%" }}>
-        Weiter
+      <Button className="rounded-xl bg-green-600 px-4 py-2 text-white hover:bg-green-700 disabled:opacity-50" color="primary" type="submit" style={{ marginTop: 8, width: "100%", }}>
+        Weiter (1/2)
       </Button>
     </form>
   );

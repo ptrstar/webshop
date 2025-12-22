@@ -8,7 +8,7 @@ export async function GET() {
     const session = await getServerSession(authOptions);
     if (session) {
         try {
-            const allCustomers = await db.select().from(customers);
+            const allCustomers = (await db.select().from(customers));
             return NextResponse.json(allCustomers);
         } catch (err: unknown) {
             console.error(err);
