@@ -51,6 +51,9 @@ export default function Customer({ customer }: { customer: InferModel<typeof cus
                 <strong>{customer.id}</strong>
             </td>
             <td style={{ padding: "12px", borderBottom: "1px solid #e0e0e0", minWidth: 140 }}>
+                {customer.createdAt.toLocaleDateString() + " " + customer.createdAt.toLocaleTimeString()}
+            </td>
+            <td style={{ padding: "12px", borderBottom: "1px solid #e0e0e0", minWidth: 140 }}>
                 {customer.name}
             </td>
             <td style={{ padding: "12px", borderBottom: "1px solid #e0e0e0", minWidth: 220 }}>
