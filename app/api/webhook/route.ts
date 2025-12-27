@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
                                 <h3>Vielen Dank ${metadata.app_customer_name}</h3>
                                 <p>Ihre Bestellung ist eingegangen und bezahlt. Sie können den Status unter folgendem Link einsehen.</p>
                                 <a href="https://www.kartenspielrichi.ch/success?session_id=${session.id}">Bestellung</a>
-                                <p>Melden Sie sich mit Fragen an diesen Absender.</p>
+                                <p>Melden Sie sich mit Fragen an <a href="mailto:info@kartenspielrichi.ch">Info</a>.</p>
                                 <br>
                                 <p>Mit freundlichen Grüssen, Richi-team</p>
                             </body>
