@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
     // Only include customer if it's a valid Stripe customer ID
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
-      payment_method_types: ["card"],
+      payment_method_types: ["twint", "card"],
       mode: "payment",
       line_items: [
         {
