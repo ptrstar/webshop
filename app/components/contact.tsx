@@ -89,7 +89,7 @@ export default function Contact() {
                     marginBottom: 8,
                     lineHeight: 1.5,
                 }}>
-                    Bei Fragen, Anfragen zu grösserer Bestellung, Anregungen o.ä, kannst du uns per E-Mail erreichen.
+                    Wir freuen uns sehr über deine Nachricht! Bei Feedback zum Spiel oder Anfragen zu grösseren Bestellungen, kannst du uns durch dieses Kontaktformular erreichen.
                 </p>
             </div>
             <div
@@ -121,7 +121,7 @@ export default function Contact() {
                 </div> : "")}
                 <input
                     type="text"
-                    placeholder="Name, Vorname"
+                    placeholder="* Vorname, Name"
                     value={name}
                     onChange={e => setName(e.target.value)}
                     required
@@ -134,22 +134,8 @@ export default function Contact() {
                     }}
                 />
                 <input
-                    type="text"
-                    placeholder="Unternehmen, Firma"
-                    value={company}
-                    onChange={e => setCompany(e.target.value)}
-                    required
-                    style={{
-                        padding: "8px",
-                        fontSize: "1rem",
-                        marginBottom: "12px",
-                        borderRadius: "6px",
-                        width: "100%",
-                    }}
-                />
-                <input
                     type="email"
-                    placeholder="E-Mail"
+                    placeholder="* E-Mail"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
@@ -161,8 +147,22 @@ export default function Contact() {
                         width: "100%",
                     }}
                 />
+                <input
+                    type="text"
+                    placeholder="Spielladen/Firma"
+                    value={company}
+                    onChange={e => setCompany(e.target.value)}
+                    required
+                    style={{
+                        padding: "8px",
+                        fontSize: "1rem",
+                        marginBottom: "12px",
+                        borderRadius: "6px",
+                        width: "100%",
+                    }}
+                />
                 <textarea
-                    placeholder="Nachricht"
+                    placeholder="* Nachricht"
                     value={message}
                     rows={7}
                     onChange={e => setMessage(e.target.value)}
@@ -179,7 +179,6 @@ export default function Contact() {
                     style={{
                         width: "100%",
                         maxWidth: "48rem",
-                        marginBottom: "24px",
                         padding: "16px",
                         background: "linear-gradient(90deg, #fdba51 0%, #f1a01e 100%)",
                         color: "#fff",
