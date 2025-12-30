@@ -1,12 +1,16 @@
 
 
 export async function POST(req: Request) {
-    const {
+    let {
         name, company, email, message
     } = await req.json();
 
-    if (!name || !company || !email || !message || name == "" || company == "" || email == "" || message == "") {
+    if (!name || !email || !message || name == "" || email == "" || message == "") {
         return new Response(JSON.stringify({status: 400, message: "Ungültige Daten erhalten"}));
+    }
+
+    if (!company || company == "") {
+        company = "[KEINE ANGABE]";
     }
 
     const emailPayload = {

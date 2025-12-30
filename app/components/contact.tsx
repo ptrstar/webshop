@@ -13,7 +13,7 @@ export default function Contact() {
     const [sent, setSent] = useState<boolean>(false);
 
     const onSend = () => {
-        if (!name || !company || !email || !message || name == "" || company == "" || email == "" || message == "") {
+        if (!name || !email || !message || name == "" || email == "" || message == "") {
             setFeedback("Bitte füllen Sie alle Felder aus");
             return;
         }
