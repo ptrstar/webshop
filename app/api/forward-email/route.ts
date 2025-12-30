@@ -25,7 +25,7 @@ export async function POST(req: Request) {
             <body>
                 <h3>Kontakt anfrage durch ${name}</h3>
                 <p>Mail: ${email}</p>
-                <p>Unternehmen/Firma: ${company}</p>
+                <p>Spielladen/Firma: ${company}</p>
                 <br>
                 <p>${message}</p>
             </body>
