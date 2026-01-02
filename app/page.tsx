@@ -168,7 +168,7 @@ export default function Page() {
 
 
       <div style={{display: "flex", alignItems: "center", marginBottom: "4em", marginTop: "2em"}}>
-        Richi - Das Kartenspiel | ©2025
+        Richi - Das Kartenspiel | ©{new Date().getFullYear()}
       </div>
 
     </div>
