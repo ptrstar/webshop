@@ -16,6 +16,11 @@ const tabs = [
   { label: "Social Media", component: <Social_Media /> },
 ];
 
+const partners = [
+  {label: "Bider&Tanner", src: "/partner-bider.jpeg"},
+  {label: "Orell Füssli", src: "/partner-orell.jpeg"},
+]
+
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -96,7 +101,7 @@ export default function Page() {
           marginTop: "2em",
           letterSpacing: "0.01em",
         }}>
-          Ausserdem bald erhältlich bei
+          Auch erhältlich bei
         </p>
 
         <div
@@ -109,24 +114,25 @@ export default function Page() {
             maxWidth: "720px",
           }}
         >
-          {[1].map((i) => (
-            <div
-              key={i}
-              style={{
-                flex: "0 0 calc(50% - 0.5rem)",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
+          {partners.map((partner, idx) => (
+            // <div
+            //   key={idx}
+            //   style={{
+            //     flex: "0 0 calc(50% - 0.5rem)",
+            //     display: "flex",
+            //     justifyContent: "center",
+            //   }}
+            // >
               <Image
-                src={`/partner-orell.png`}
-                alt={`shop ${i}`}
-                width={360}
-                height={240}
+                src={partner.src}
+                alt={partner.label}
+                key={idx}
+                width={240}
+                height={120}
                 
-                style={{ width: "100%", height: "auto", borderRadius: "1em", boxShadow: "0.1em 0.1em 0.1em 0.1em lightgray", border: "none" }}
+                style={{display: "flex", flex: "0 0 calc(50% - 0.5rem)", borderRadius: "1em", border: "none" }}
               />
-            </div>
+            // </div>
           ))}
         </div>
 
