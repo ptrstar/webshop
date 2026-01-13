@@ -17,8 +17,8 @@ const tabs = [
 ];
 
 const partners = [
-  {label: "Bider&Tanner", src: "/partner-bider.jpeg"},
   {label: "Orell Füssli", src: "/partner-orell.jpeg"},
+  {label: "Bider&Tanner", src: "/partner-bider.jpeg"},
 ]
 
 export default function Page() {
