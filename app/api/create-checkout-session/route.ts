@@ -29,6 +29,23 @@ export async function POST(req: Request) {
           quantity: amount,
         },
       ],
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: {
+              amount: amount > 1 ? 0 : 350,
+              currency: 'chf',
+            },
+            display_name: amount > 1 ? 'Free Shipping' : 'Standard Shipping (Gratis ab 2 Spielen)',
+            // Optional: add delivery estimates
+            // delivery_estimate: {
+            //   minimum: { unit: 'business_day', value: 3 },
+            //   maximum: { unit: 'business_day', value: 5 },
+            // },
+          },
+        },
+      ],
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/cancel`,
       allow_promotion_codes: true,
