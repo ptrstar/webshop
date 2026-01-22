@@ -16,7 +16,7 @@ export default function Videocontent() {
             <div style={{ width: "100%", maxWidth: "100%" }}>
                 <div style={{ position: "relative", width: "100%", paddingTop: "56.25%" }}>
                     <iframe
-                        src="https://www.youtube.com/embed/Y0rTvFbkJik?si=t79UPDrTi5Nf4Xhl"
+                        src="https://www.youtube.com/embed/k90kf-fFyQY?si=t79UPDrTi5Nf4Xhl"
                         title="Erklärvideo"
                         allow="autoplay; fullscreen; picture-in-picture"
                         allowFullScreen
