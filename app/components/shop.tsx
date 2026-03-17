@@ -29,6 +29,28 @@ export default function Shop() {
     }
 
     return (
+        <div
+            style={{
+            width: "100%",
+            maxWidth: "48rem",
+            marginBottom: "24px",
+            padding: "16px",
+            background: "linear-gradient(90deg, #fdba51 0%, #f1a01e 100%)",
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: "1.2rem",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            boxShadow: "0 4px 16px rgba(255,87,34,0.15)",
+            transition: "background 0.3s, transform 0.2s",
+            }}
+            >
+            Out of stock
+        </div>
+    );
+
+    return (
         <>
             {((!isOpen) ? (
                 <button

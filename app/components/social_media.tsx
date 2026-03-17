@@ -1,6 +1,5 @@
-import React from "react";
 import { FaInstagram, FaTiktok } from "react-icons/fa6";
-import { FaYoutube, FaFacebook } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa6";
 
 export default function Social_Media() {
     return (
@@ -31,15 +30,6 @@ export default function Social_Media() {
                 className="rounded-full bg-white hover:bg-gray-100 shadow p-3 transition-colors"
             >
                 <FaTiktok className="text-black w-8 h-8" />
-            </a>
-            <a
-                href="https://www.facebook.com/profile.php?id=61577257205867&sk=about"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="rounded-full bg-white hover:bg-blue-100 shadow p-3 transition-colors"
-            >
-                <FaFacebook className="text-blue-600 w-8 h-8" />
             </a>
         </div>
     );
