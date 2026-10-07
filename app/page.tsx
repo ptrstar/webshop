@@ -12,7 +12,7 @@ import Videocontent from "./components/videocontent";
 const tabs = [
   { label: "Shop", component: <Preorder /> },
   { label: "Erklärvideo", component: <Videocontent /> },
-  { label: "Kontakt", component: <Contact /> },
+//  { label: "Kontakt", component: <Contact /> },
   { label: "Social Media", component: <Social_Media /> },
 ];
 
